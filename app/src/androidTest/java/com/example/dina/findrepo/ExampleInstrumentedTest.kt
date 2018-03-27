@@ -1,12 +1,17 @@
 package com.example.dina.findrepo
 
 import android.support.test.InstrumentationRegistry
+import android.support.test.espresso.Espresso
+import android.support.test.espresso.action.ViewActions
+import android.support.test.espresso.matcher.ViewMatchers
+import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
+import org.junit.Rule
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -21,4 +26,5 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getTargetContext()
         assertEquals("com.example.dina.findrepo", appContext.packageName)
     }
-}
+    }
+
