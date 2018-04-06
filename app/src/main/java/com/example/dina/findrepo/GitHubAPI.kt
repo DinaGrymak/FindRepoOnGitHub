@@ -15,10 +15,10 @@ interface GitHubService {
 
     @GET("search/repositories?")
     //fun searchRepos(@Query("q") searchTerm: String): Call<GitHubSearchResult>
-    fun searchRepos (@Query("q") searchTerm: String) : retrofit2.Call<GitHubSearchResult>
+    fun searchRepos(@Query("q") searchTerm: String): retrofit2.Call<GitHubSearchResult>
 
     @GET("users/{user}/repos")
-fun userRepos(@Path("user") username: String) : retrofit2.Call<List<Repo>>
+    fun userRepos(@Path("user") username: String): retrofit2.Call<List<Repo>>
 
 }
 
@@ -28,6 +28,7 @@ class GitHubUser(val avatar_url: String)
 
 class GitHubRetriever {
     val service: GitHubService
+
     init {
 
         val retrofit = Retrofit.Builder().baseUrl("https://api.github.com/").addConverterFactory(GsonConverterFactory.create()).build()
@@ -40,12 +41,12 @@ class GitHubRetriever {
             searchT = "Eggs"
         }
 
-       val call = service.searchRepos(searchT)
+        val call = service.searchRepos(searchT)
         call.enqueue(callback)
     }
 
     fun userRepos(callback: Callback<List<Repo>>, username: String) {
-     val call = service.userRepos(username)
+        val call = service.userRepos(username)
         call.enqueue(callback)
     }
 }
