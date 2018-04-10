@@ -50,7 +50,7 @@ class SearchResultActivity : AppCompatActivity() {
                         println("User doesn't exist")
 
                         val theView = this@SearchResultActivity.findViewById<View>(android.R.id.content)
-                    Snackbar.make(theView, "User not found:( Go back and try again!", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(theView, "User not found:( Go back and try again!", Snackbar.LENGTH_LONG).show()
 
                     } else {
                         val repos = response?.body()
