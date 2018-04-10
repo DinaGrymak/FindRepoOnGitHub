@@ -20,5 +20,5 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getTargetContext()
         assertEquals("com.example.dina.findrepo", appContext.packageName)
     }
-    }
+}
 

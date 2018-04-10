@@ -3,31 +3,38 @@ package com.example.dina.findrepo.Screens
 import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.matcher.ViewMatchers.withId
+import android.support.test.uiautomator.UiCollection
 import android.support.test.uiautomator.UiSelector
 import com.example.dina.findrepo.R
-import org.hamcrest.CoreMatchers.allOf
-import org.hamcrest.CoreMatchers.anything
+import org.hamcrest.CoreMatchers.*
 import org.junit.Assert
 
 /**
  * Created by dina on 4/7/18.
  */
-class SearchResultScreen: BaseScreen() {
+class SearchResultScreen : BaseScreen() {
+    val repoResult = UiCollection(UiSelector().resourceId("com.example.dina.findrepo:id/repoListView"))
+    val url = uiDevice.findObject(UiSelector().resourceId("com.android.chrome:id/url_bar"))
 
-    val repoResult = uiDevice.findObject(UiSelector().resourceId("com.example.dina.findrepo:id/repoListView"))
-    val link = uiDevice.findObject(UiSelector().resourceId("android:id/content"))
 
     init {
-        Assert.assertTrue("RepoListView isn't displayed", repoResult.waitForExists(3000))
+        Assert.assertTrue("RepoListView is not displayed", repoResult.waitForExists(3000))
     }
 
-fun clickOnLink(index: Int) {
-    val link = onData(anything()).inAdapterView(withId(R.id.repoListView))
-    link.atPosition(index).perform(click())
-}
+    fun clickOnLink(index: Int) {
+        val link = onData(anything()).inAdapterView(withId(R.id.repoListView))
+        link.atPosition(index).perform(click())
+    }
 
-//    init {
-//        Assert.assertTrue("Link wasn't open", link.waitForExists(3000))
-//    }
+    fun checkUrlExist() {
+        Assert.assertTrue("GitHub page is not displayed", url.waitForExists(3000))
+    }
 
+    fun textfromUrl() = url.text
+
+    fun checkListContainsRepo(index: Int, repo: String) {
+        val resultItem = repoResult.getChildByInstance(UiSelector()
+                .resourceId("com.example.dina.findrepo:id/repoTextView"), index).text
+        Assert.assertTrue(resultItem.contains(repo))
+    }
 }

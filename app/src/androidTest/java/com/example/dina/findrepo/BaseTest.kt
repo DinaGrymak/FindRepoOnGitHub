@@ -3,7 +3,6 @@ package com.example.dina.findrepo
 import android.support.test.InstrumentationRegistry
 import android.support.test.uiautomator.UiDevice
 import android.util.Log
-import org.junit.After
 import org.junit.Before
 
 /**
@@ -22,8 +21,8 @@ open class BaseTest() {
         val stdOut = uiDevice.executeShellCommand(command)
         Log.i("Test", command + ": " + stdOut)
     }
+
     fun clearAppData() = executeShellCommand("pm clear " + "com.example.dina.findrepo")
     fun killApp() = executeShellCommand("am force-stop " + "com.example.dina.findrepo")
     fun launchApp() = executeShellCommand("am start -n " + "com.example.dina.findrepo")
-
 }
