@@ -36,25 +36,23 @@ class AcceptanceTest {
         search.clickViewBtn()
         search.waitForExist()
 
-        val searchresult = SearchResultScreen()
-        Assert.assertTrue("List of users are not displayed", searchresult.repoResult.waitForExists(globalTimeOut))
-        searchresult.clickOnLink(3)
-        val text = searchresult.textfromUrl()
-        Assert.assertTrue("", text.contains(user))
-
+        val searchResult = SearchResultScreen()
+        Assert.assertTrue("List of users is not displayed", searchResult.repoResult.waitForExists(globalTimeOut))
+        searchResult.clickOnLink(3)
+        val url = searchResult.textfromUrl()
+        Assert.assertTrue("Opened url contains exact user name", url.contains(user))
     }
 
     @Test
     fun searchRepo() {
         val search = SearchScreen()
         search.checkRepoHint()
-        val repo = "ultimateandroid"
+        val repo = "UltimateAndroid"
         search.typeTextIntoField(search.repoField, repo)
         search.clickSearchBtn()
         search.waitForExist()
 
         val searchresult = SearchResultScreen()
-        //assertion
         searchresult.clickOnLink(5)
         searchresult.checkUrlExist()
     }
