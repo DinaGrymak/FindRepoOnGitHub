@@ -6,6 +6,7 @@ import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.uiautomator.UiCollection
 import android.support.test.uiautomator.UiSelector
 import com.example.dina.findrepo.R
+import com.example.dina.findrepo.globalTimeOut
 import org.hamcrest.CoreMatchers.*
 import org.junit.Assert
 
@@ -18,7 +19,7 @@ class SearchResultScreen : BaseScreen() {
 
 
     init {
-        Assert.assertTrue("RepoListView is not displayed", repoResult.waitForExists(3000))
+        Assert.assertTrue("RepoListView is not displayed", repoResult.waitForExists(globalTimeOut))
     }
 
     fun clickOnLink(index: Int) {

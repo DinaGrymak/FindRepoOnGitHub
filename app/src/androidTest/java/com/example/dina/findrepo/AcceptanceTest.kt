@@ -26,6 +26,7 @@ class AcceptanceTest {
         val search = SearchScreen()
         search.typeTextIntoField(search.userField, "DinaGrymak")
         search.clickViewBtn()
+        Assert.fail()
         search.waitForExist()
         pressBack()
         search.cleanUserField()
