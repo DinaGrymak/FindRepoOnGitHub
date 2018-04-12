@@ -22,16 +22,19 @@ class AcceptanceTest {
     val mActivityRule = ActivityTestRule<MainActivity>(MainActivity::class.java)
 
     @Test
-    fun searchUser() {
+    fun checkUserHintAndPressBack() {
         val search = SearchScreen()
         search.typeTextIntoField(search.userField, "DinaGrymak")
         search.clickViewBtn()
-        Assert.fail()
         search.waitForExist()
         pressBack()
         search.cleanUserField()
         search.checkUserHint()
+    }
 
+    @Test
+    fun searchUser() {
+        val search = SearchScreen()
         val user = "bay-qa"
         search.typeTextIntoField(search.userField, user)
         search.clickViewBtn()
