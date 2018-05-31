@@ -25,7 +25,7 @@ class SearchScreen : BaseScreen() {
     val hintForUserField get() = UiSelector().resourceId("userRepoEditText").toString()
     val snackBar = uiDevice.findObject(UiSelector().resourceId("com.example.dina.findrepo:id/snackbar_text"))
 
-//have to create init here
+// have to create init here
 
     fun clickSearchBtn() = searchButton.perform(click())
     fun clickViewBtn() = viewButton.perform(click())
